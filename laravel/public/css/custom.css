@@ -1,0 +1,56 @@
+
+input[type="checkbox"] {
+    accent-color: #d30000 !important;
+}
+
+.navbar-brand {
+    background: rgb(84, 0, 0);
+    background: linear-gradient(70deg, rgba(84, 0, 0, 1) 0%, rgba(211, 0, 0, 1) 100%);
+}
+
+.panel-body {
+    .dropdown {
+        background-color: #00000000 !important;
+
+        .active {
+            border-radius: 1rem;
+            background-color: #840000 !important;
+        }
+    }
+}
+
+.navbar-nav {
+    .active {
+        border-radius: 1rem;
+        background-color: #840000;
+    }
+}
+
+.voyager .navbar .navbar-nav>li:hover>a,
+.voyager .navbar.navbar-default .navbar-nav>li:hover>a {
+    color: #ff0000;
+    border-radius: 1rem;
+    background-color: #000;
+}
+
+.voyager .side-menu.sidebar-inverse {
+    background: #000;
+    background: linear-gradient(45deg, #353d4760, #21292e91);
+}
+
+.voyager .side-menu.sidebar-inverse {
+    background-color: #000;
+}
+
+.side-menu-container .panel-content h4 {
+    font-weight: bold !important;
+}
+
+.btn-red {
+    background-color: #d30000;
+    color: #fff;
+}
+
+.btn-red:hover {
+    color: #fff;
+}
