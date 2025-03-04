@@ -13,4 +13,10 @@ class Calificacion extends Model
     protected $primaryKey = 'id';
     public $timestamps = true;
     //
+    protected $fillable = [
+        'id_turista',
+        'id_tour_actividad',
+        'puntuacion',
+        'comentario',
+    ];
 }

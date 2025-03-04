@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <div class="w-100 m-auto align-items-center">
+    <div class="w-100 m-auto align-items-center bg-black">
         <div class="position-relative overflow-hidden">
             <img class="vw-100 vh-100 object-fit-cover position-relative"
                 src="{{ Voyager::image(Voyager::setting("admin.bg_image"), voyager_asset("images/bg.jpg")) }}" alt="" style="filter: blur(5px); object-position: center;">
@@ -45,7 +45,7 @@
         </div>
 
         <div class="position-absolute top-0 vw-100 vh-100 align-content-center">
-            <div class="card p-5 mx-auto bg-white bg-opacity-50" style="max-width: 30rem;">
+            <div class="card p-5 mx-auto bg-black bg-opacity-25" style="max-width: 30rem;">
                 <div class=""><?php $admin_logo_img = Voyager::setting('admin.icon_image', ''); ?>
                     @if($admin_logo_img == '')
                         <img class="" src="{{ voyager_asset('images/logo-icon-light.png') }}" alt="Logo Icon" height="70">
