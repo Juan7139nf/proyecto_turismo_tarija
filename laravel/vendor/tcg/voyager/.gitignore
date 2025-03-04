@@ -1,0 +1,10 @@
+/node_modules
+.DS_Store
+.idea
+/vendor/*
+!vendor/tcg
+build
+.lock
+composer.lock
+.phpunit.result.cache
+.phpunit.cache
