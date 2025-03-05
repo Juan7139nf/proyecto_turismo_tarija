@@ -555,6 +555,9 @@
             </div>
         </div>
     </div>
+    <script>
+        window.close();
+    </script>
 </body>
 
 </html>

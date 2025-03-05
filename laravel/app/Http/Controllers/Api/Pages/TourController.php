@@ -16,18 +16,9 @@ class TourController extends Controller
     {
         $query = Tour::query();
 
-        // Buscar por nombre (búsqueda parcial, insensible a mayúsculas/minúsculas)
-        if ($request->has('nombre')) {
-            $query->where('nombre', 'LIKE', '%' . $request->input('nombre') . '%');
-        }
+        $query->whereHas('tourActividad');
 
-        // Buscar por destino (búsqueda parcial)
-        if ($request->has('destino')) {
-            $query->where('destino', 'LIKE', '%' . $request->input('destino') . '%');
-        }
-
-        // Obtener resultados paginados
-        $tours = $query->paginate(10);
+        $tours = $query->get();
 
         // Procesar la portada y las fotos
         foreach ($tours as $tour) {
@@ -36,10 +27,12 @@ class TourController extends Controller
                 $tour->portada = url('storage/' . $tour->portada);
             }
 
-            // Convertir la cadena de fotos en un array y agregar las rutas completas
-            $tour->fotos = collect(json_decode($tour->fotos))->map(function ($foto) {
-                return url('storage/' . $foto);
-            });
+            if ($tour && $tour->fotos) {
+                // Convertir la cadena de fotos en un array y agregar las rutas completas
+                $tour->fotos = collect(json_decode($tour->fotos))->map(function ($foto) {
+                    return url('storage/' . $foto);
+                });
+            }
         }
 
         // Retornar los tours paginados
@@ -57,9 +50,11 @@ class TourController extends Controller
         $actividades = $tourActividades->map(function ($tourActividad) {
             // Obtener la actividad relacionada
             $actividad = Actividad::find($tourActividad->id_actividad);
-            $actividad->fotos = collect(json_decode($actividad->fotos))->map(function ($foto) {
-                return url('storage/' . $foto);
-            });
+            if ($actividad && $actividad->fotos) {
+                $actividad->fotos = collect(json_decode($actividad->fotos))->map(function ($foto) {
+                    return url('storage/' . $foto);
+                });
+            }
 
             // Obtener el guía relacionado con el tour (User)
             $guia = User::find($tourActividad->id_guia);

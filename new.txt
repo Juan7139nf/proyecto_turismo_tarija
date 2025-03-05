@@ -1,0 +1,38 @@
+PS D:\Codigos\proyectos_turismo\laravel> composer require barryvdh/laravel-dompdf
+./composer.json has been updated
+Running composer update barryvdh/laravel-dompdf
+Loading composer repositories with package information
+Updating dependencies
+Lock file operations: 6 installs, 0 updates, 0 removals
+  - Locking barryvdh/laravel-dompdf (v3.1.1)
+  - Locking dompdf/dompdf (v3.1.0)
+  - Locking dompdf/php-font-lib (1.0.1)
+  - Locking dompdf/php-svg-lib (1.0.0)
+  - Locking masterminds/html5 (2.9.0)
+  - Locking sabberworm/php-css-parser (v8.7.0)
+Writing lock file
+Installing dependencies from lock file (including require-dev)
+Package operations: 6 installs, 0 updates, 0 removals
+  - Downloading masterminds/html5 (2.9.0)
+  - Downloading sabberworm/php-css-parser (v8.7.0)
+  - Downloading dompdf/php-svg-lib (1.0.0)        
+  - Downloading dompdf/php-font-lib (1.0.1)       
+  - Downloading dompdf/dompdf (v3.1.0)
+  - Downloading barryvdh/laravel-dompdf (v3.1.1)  
+  - Installing masterminds/html5 (2.9.0): Extracting archive
+  - Installing sabberworm/php-css-parser (v8.7.0): Extracting archive
+  - Installing dompdf/php-svg-lib (1.0.0): Extracting archive
+  - Installing dompdf/php-font-lib (1.0.1): Extracting archive
+  - Installing dompdf/dompdf (v3.1.0): Extracting archive
+  - Installing barryvdh/laravel-dompdf (v3.1.1): Extracting archive
+2 package suggestions were added by new dependencies, use `composer suggest` to see details.
+Generating optimized autoload files
+> Illuminate\Foundation\ComposerScripts::postAutoloadDump
+You made a reference to a non-existent script @/usr/bin/php artisan package:discover --ansi
+84 packages you are using are looking for funding.
+Use the `composer fund` command to find out more!
+You made a reference to a non-existent script @/usr/bin/php artisan vendor:publish --tag=laravel-assets --ansi --force
+Found 3 security vulnerability advisories affecting 1 package.
+Run "composer audit" for a full list of advisories.
+Using version ^3.1 for barryvdh/laravel-dompdf
+PS D:\Codigos\proyectos_turismo\laravel> 

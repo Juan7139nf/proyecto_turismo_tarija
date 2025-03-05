@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   FaWineGlassAlt,
@@ -267,15 +267,15 @@ const TourCard = ({ tour, index }) => {
                         ${tour.precio || 'Contact us'}
                         <span> / person</span>
                     </Price>
-                    <NavLink to={`/tours/${tour.id}`} style={{ textDecoration: 'none' }}>
+                    <Link to={`/tours/${tour.id}`} style={{ textDecoration: 'none' }}>
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className="w-full bg-white text-red-700 px-6 py-2 rounded-full font-semibold hover:bg-red-700 hover:text-white transition-all duration-300"
                         >
-                            View Details
+                            Mas detalles
                         </motion.button>
-                    </NavLink>
+                    </Link>
                 </Content>
             </Card>
         </motion.div>

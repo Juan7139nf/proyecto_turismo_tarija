@@ -45,6 +45,6 @@ class Pago extends AbstractWidget
      */
     public function shouldBeDisplayed()
     {
-        return in_array(Auth::user()->role->id, [1, 3, 4]);
+        return in_array(Auth::user()->role->id, [1, 3]);
     }
 }

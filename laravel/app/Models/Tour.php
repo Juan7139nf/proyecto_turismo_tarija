@@ -14,6 +14,10 @@ class Tour extends Model
     protected $primaryKey = 'id';
     public $timestamps = true;
     //
+    public function tourActividad()
+    {
+        return $this->hasMany(TourActividad::class, 'id_tour');
+    }
     protected static function booted()
     {
         static::creating(function ($tour) {
