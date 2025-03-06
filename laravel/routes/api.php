@@ -6,7 +6,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 
 Route::post('/user/create', [UserController::class, 'create']);
-Route::put('/user/edit/{id}', [UserController::class, 'edit'])->middleware('auth:sanctum');
+Route::post('/user/edit/{id}', [UserController::class, 'edit'])->middleware('auth:sanctum');
 Route::post('/user/avatar/{id}', [UserController::class, 'updateAvatar'])->middleware('auth:sanctum');
 
 Route::get("test", function (Request $request){

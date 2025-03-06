@@ -11,9 +11,9 @@ Route::middleware('auth:sanctum')->group(function () {
     // Crear una reserva con múltiples actividades
     Route::post('/reservas', [ReservaController::class, 'store']);
     // Cancelar una reserva pendiente
-    Route::put('/reservas/{id}/cancelar', [ReservaController::class, 'cancelar']);
+    Route::post('/reservas/{id}/cancelar', [ReservaController::class, 'cancelar']);
     // Reactivar una reserva cancelada
-    Route::put('/reservas/{id}/reactivar', [ReservaController::class, 'reactivar']);
+    Route::post('/reservas/{id}/reactivar', [ReservaController::class, 'reactivar']);
 
     Route::post('/pagar/reservas', [PagoController::class,'store']);
 });

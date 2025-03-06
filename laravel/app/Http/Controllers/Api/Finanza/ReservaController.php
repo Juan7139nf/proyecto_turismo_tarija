@@ -13,14 +13,15 @@ class ReservaController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
-        $reservas = Reserva::where('id_turista', $user->id)->get();
+        $reservas = Reserva::where('id_turista', $user->id)
+        ->orderBy('updated_at', 'desc') // Ordenar por updated_at descendente
+        ->get();
 
         $reservas->transform(function ($reserva) {
             // Transformación del avatar del turista
             if ($reserva->turista && $reserva->turista->avatar) {
                 $reserva->turista->avatar = url('storage/' . $reserva->turista->avatar);
             }
-            $reserva->tourActividad->makeHidden(['tour', 'actividad']);
     
             return $reserva;
         });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\Actividad;
+use App\Models\Calificacion;
 use App\Models\TourActividad;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -58,13 +59,18 @@ class TourController extends Controller
 
             // Obtener el guía relacionado con el tour (User)
             $guia = User::find($tourActividad->id_guia);
-            $guia->avatar = url('storage/' . $guia->avatar);
+            if ($guia && $guia->avatar) {
+                $guia->avatar = url('storage/' . $guia->avatar);
+            }
 
+            $promedioPuntuacion = Calificacion::where('id_tour_actividad', $tourActividad->id)
+                ->avg('puntuacion');
             $tourActividad->makeHidden(['tour', 'actividad']);
             return [
                 'actividad' => $actividad,
                 'tour_actividad' => $tourActividad,
-                'guia' => ['display' => $guia->display, 'avatar' => $guia->avatar],
+                'guia' => ['display' => $guia->display ?? null, 'avatar' => $guia->avatar ?? null],
+                'promedio_puntuacion' => $promedioPuntuacion !== null ? round($promedioPuntuacion, 1) : null,
             ];
         });
 

@@ -41,12 +41,12 @@ const Navbar = () => {
       type: "POST",
       contentType: "application/json",
       headers: {
-        Authorization: `Bearer ${token}`, 
+        Authorization: `Bearer ${token}`,
       },
       success: function (response) {
         localStorage.removeItem('user');
         localStorage.removeItem('token');
-        setUser(null); 
+        setUser(null);
         window.location.href = '/';
       },
       error: function (xhr, status, error) {
@@ -79,46 +79,50 @@ const Navbar = () => {
             <NavLink to="/404" className="text-gray-700 hover:text-red-700 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
               Contacto
             </NavLink>
+            {user ? (
+              <div className="relative dropdown-container">
+                <button
+                  onClick={toggleDropdown}
+                  className="flex items-center space-x-2 bg-gray-200 px-3 py-2 rounded-lg hover:bg-gray-300"
+                >
+                  <img
+                    src={user.avatar}
+                    alt={user.name}
+                    className="w-8 h-8 rounded-full"
+                  />
+                  <span>{user.name}</span>
+                </button>
+                {dropdownOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md z-10">
+                    <div className="block px-4 py-2 text-sm text-gray-700">{user.display}</div>
+                    <NavLink to="/perfil" className="block hover:bg-blue-400 hover:text-white px-4 py-2 text-sm text-gray-700">
+                      Ver Perfil
+                    </NavLink>
+                    <NavLink to="/reservas" className="block hover:bg-blue-400 hover:text-white px-4 py-2 text-sm text-gray-700">
+                      Mis reservas
+                    </NavLink>
+                    <button
+                      onClick={handleLogout}
+                      className="block w-full hover:bg-red-400 hover:text-white transition text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                    >
+                      Cerrar sesión
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="flex gap-1 text-center">
+                <NavLink to="/login" className="bg-red-600 px-2 my-3 text-center text-white px-2 py-2 rounded-md hover:bg-red-800">
+                  Iniciar sesión
+                </NavLink>
+                <NavLink to="/registro" className="bg-green-600 px-2 my-3 text-center text-white px-2 py-2 rounded-md hover:bg-green-700">
+                  Registrarse
+                </NavLink>
+              </div>
+            )}
           </div>
 
-          {user ? (
-            <div className="relative dropdown-container">
-              <button 
-                onClick={toggleDropdown}
-                className="flex items-center space-x-2 bg-gray-200 px-3 py-2 rounded-lg hover:bg-gray-300"
-              >
-                <img
-                  src={user.avatar}
-                  alt={user.name}
-                  className="w-8 h-8 rounded-full"
-                />
-                <span>{user.name}</span>
-              </button>
-              {dropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md z-10">
-                  <div className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{user.display}</div>
-                  <NavLink to="/perfil" className="block hover:bg-blue-400 hover:text-white px-4 py-2 text-sm text-gray-700">
-                    Ver Perfil
-                  </NavLink>
-                  <button
-                    onClick={handleLogout}
-                    className="block w-full hover:bg-red-400 hover:text-white transition text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
-                  >
-                    Cerrar sesión
-                  </button>
-                </div>
-              )}
-            </div>
-          ) : (
-            <div className="flex gap-10 text-center">
-              <NavLink to="/login" className="bg-red-600 px-5 my-3 text-center text-white px-4 py-2 rounded-md hover:bg-red-800">
-                Iniciar sesión
-              </NavLink>
-              <NavLink to="/registro" className="bg-green-600 px-5 my-3 text-center text-white px-4 py-2 rounded-md hover:bg-green-700">
-                Registrarse
-              </NavLink>
-            </div>
-          )}
+
 
           <div className="md:hidden flex items-center">
             <button
@@ -161,12 +165,51 @@ const Navbar = () => {
           <NavLink to="/about" className="text-gray-700 hover:text-red-700 block px-3 py-2 rounded-md text-base font-medium">
             Nosotros
           </NavLink>
-          <NavLink to="/contact" className="text-gray-700 hover:text-red-700 block px-3 py-2 rounded-md text-base font-medium">
+          <NavLink to="/404" className="text-gray-700 hover:text-red-700 block px-3 py-2 rounded-md text-base font-medium">
             Contacto
           </NavLink>
-          <button className="w-full bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-red-800 transition-colors duration-200 mt-2">
-            Reservar Ahora
-          </button>
+
+          {user ? (
+            <div className="relative dropdown-container">
+              <button
+                onClick={toggleDropdown}
+                className="flex items-center space-x-2 bg-gray-200 px-3 py-2 rounded-lg hover:bg-gray-300"
+              >
+                <img
+                  src={user.avatar}
+                  alt={user.name}
+                  className="w-8 h-8 rounded-full"
+                />
+                <span>{user.name}</span>
+              </button>
+              {dropdownOpen && (
+                <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-10">
+                  <div className="block px-4 py-2 text-sm text-gray-700">{user.display}</div>
+                  <NavLink to="/perfil" className="block hover:bg-blue-400 hover:text-white px-4 py-2 text-sm text-gray-700">
+                    Ver Perfil
+                  </NavLink>
+                  <NavLink to="/reservas" className="block hover:bg-blue-400 hover:text-white px-4 py-2 text-sm text-gray-700">
+                    Mis reservas
+                  </NavLink>
+                  <button
+                    onClick={handleLogout}
+                    className="block w-full hover:bg-red-400 hover:text-white transition text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                  >
+                    Cerrar sesión
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="flex gap-10 text-center">
+              <NavLink to="/login" className="bg-red-600 px-5 my-3 text-center text-white px-4 py-2 rounded-md hover:bg-red-800">
+                Iniciar sesión
+              </NavLink>
+              <NavLink to="/registro" className="bg-green-600 px-5 my-3 text-center text-white px-4 py-2 rounded-md hover:bg-green-700">
+                Registrarse
+              </NavLink>
+            </div>
+          )}
         </div>
       </div>
     </nav>

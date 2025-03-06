@@ -61,7 +61,7 @@ const PerfilEditar = () => {
         // Enviar solicitud POST para actualizar los datos del usuario
         $.ajax({
             url: `${import.meta.env.VITE_API_URL}/user/edit/${id}`,
-            type: "PUT",
+            type: "POST",
             contentType: "application/json",
             headers: {
                 Authorization: `Bearer ${token}`

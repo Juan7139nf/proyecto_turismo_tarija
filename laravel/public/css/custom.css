@@ -1,3 +1,26 @@
+thead{
+    th{
+        color: #000 !important;
+    }
+}
+tbody{
+    td{
+        color: #000 !important;
+    }
+}
+
+.page-title{
+    color: #000 !important;
+}
+
+.form-group{
+    label{
+        color: #000 !important;
+    }
+    input{
+        color: #000 !important;
+    }
+}
 
 input[type="checkbox"] {
     accent-color: #d30000 !important;
